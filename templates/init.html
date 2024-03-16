@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilos personalizados */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://marketplace.canva.com/EAFYIWPCudg/1/0/1600w/canva-papel-de-parede-para-computador-astronauta-gal%C3%A1xia-preto-e-branco-lKp1cXK1ybY.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .upload-form {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            position: relative; /* Para posicionar os elementos filho */
+        }
+
+        .upload-input {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: 2px dashed #6c757d; /* cinza */
+            color: #6c757d; /* cinza */
+            background-color: transparent;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-bottom: 20px;
+            width: calc(100% - 40px); /* mesma largura do botão enviar com padding */
+            display: block;
+        }
+
+        .custom-file-upload:hover {
+            background-color: rgba(108, 117, 125, 0.1); /* cinza claro */
+            color: #495057; /* cinza mais escuro */
+        }
+
+        .upload-button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: 2px solid #4caf50;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: calc(100% - 40px); /* mesma largura do botão enviar com padding */
+        }
+
+        .upload-button:hover {
+            background-color: #45a049;
+        }
+
+        .upload-progress {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .upload-progress.active {
+            display: block;
+        }
+
+        /* Estilo para texto de erro */
+        .text-danger {
+            color: #dc3545; /* Vermelho */
+        }
+
+        /* Estilo para o ícone de verificação */
+        .check-icon {
+            position: absolute;
+            top: 30px; /* Ajusta a posição para acima da caixa de seleção */
+            right: 15px;
+            color: #4caf50; /* Verde */
+            display: none; /* Inicia oculto */
+            font-size: 1.5em; /* Tamanho do ícone aumentado */
+        }
+
+        /* Estilo para o nome do arquivo selecionado */
+        .file-name {
+            position: absolute;
+            top: 30px; /* Ajusta a posição para acima da caixa de seleção */
+            left: 0;
+            right: 0;
+            margin: 0 auto; /* Centraliza horizontalmente */
+            text-align: center;
+            font-weight: bold;
+            padding-right: 25px; /* Aumenta o espaçamento à direita para acomodar o ícone de verificação */
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-form">
+        <h1 class="mb-4"></h1>
+        <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+            <label for="file" class="custom-file-upload">Escolher arquivo</label>
+            <input id="file" class="upload-input" type="file" name="file" accept=".txt" required>
+            <span id="fileName" class="check-icon">&#10004;</span> <!-- Ícone de verificação -->
+            <span id="fileLabel" class="file-name"></span> <!-- Nome do arquivo selecionado -->
+            <div class="d-grid gap-2">
+                <button class="upload-button" type="submit">Enviar</button>
+            </div>
+            <div class="upload-progress" id="uploadProgress">
+                Carregando...
+            </div>
+        </form>
+        <!-- Erro agora está dentro de um div -->
+        <div class="error">
+            {% if error %}
+                <p class="text-danger">{{ error }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('file').addEventListener('change', function() {
+            var fileName = this.files[0].name; // Obtém o nome do arquivo selecionado
+            document.getElementById('fileName').style.display = 'inline'; // Mostra o ícone de verificação
+            document.getElementById('fileLabel').textContent = fileName; // Define o nome do arquivo selecionado
+        });
+    </script>
+</body>
+</html>
