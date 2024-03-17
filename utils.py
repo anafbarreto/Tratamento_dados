@@ -34,8 +34,10 @@ def is_valid_date(date_str):
     if date_str is None:
         return True  # Considera datas em branco como válidas
     try:
-        datetime.strptime(date_str, '%Y-%m-%d')
-        return True
+        date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+        # Verifica se a data é anterior ou igual à data atual
+        current_date = datetime.now().date()
+        return date_obj.date() <= current_date
     except ValueError:
         return False
 

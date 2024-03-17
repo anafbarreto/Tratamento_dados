@@ -14,7 +14,7 @@ def upload_file():
             return render_template('init.html', error="Nenhum arquivo selecionado")
         
         if not is_valid_txt_file(uploaded_file.filename):
-            return render_template('init.html', error="Somente arquivos .txt são permitidos")
+            return render_template('init.html', error="Somente arquivos .txt sao permitidos")
         
         file_path = DataProcessor.save_uploaded_file(uploaded_file)
         processed_data = DataProcessor.process_data(file_path)
@@ -30,18 +30,18 @@ def display_data():
 
     if not is_valid_date(start_date) or not is_valid_date(end_date):
         errors = [{"error": "Data invalida"}]
-        return render_template('display.html', errors=errors)
+        return render_template('display.html', errors=errors), 400
 
     # Verifica se o order_id é válido
     if order_id and not is_valid_order_id(order_id, DataProcessor.processed_data):
-        errors = [{"error": "Order ID não encontrado"}]
-        return render_template('display.html', errors=errors)
+       errors = [{"error": "Order ID nao encontrado"}]
+       return render_template('display.html', errors=errors), 400
 
     # Filtrar os dados
     filtered_data = filter_data(DataProcessor.processed_data, order_id, start_date, end_date)
 
     # Passar os dados filtrados para o template HTML
-    return render_template('display.html', data=filtered_data)
+    return render_template('display.html', data=filtered_data), 200
 
 @app.route('/')
 def index():

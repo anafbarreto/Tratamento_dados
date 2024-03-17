@@ -5,7 +5,6 @@ from utils import is_valid_date
 class DataProcessor:
     processed_data = []
 
-    @staticmethod
     def save_uploaded_file(uploaded_file):
         uploads_folder = 'uploads'
         if not path.exists(uploads_folder):
@@ -15,7 +14,6 @@ class DataProcessor:
         uploaded_file.save(file_path)
         return file_path
     
-    @staticmethod
     def process_data(file_path):
         users_data = {}
 

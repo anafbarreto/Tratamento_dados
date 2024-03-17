@@ -70,12 +70,12 @@
                     <input type="text" class="form-control" id="order_id" name="order_id" value="{{ request.args.get('order_id', '') }}">
                 </div>
                 <div class="col-md-3 form-group">
-                    <label for="start_date">Start Date:</label>
-                    <input type="date" class="form-control" id="start_date" name="start_date" value="{{ request.args.get('start_date', '') }}">
+                    <label for="start_date">Start Year:</label>
+                    <input type="date" class="form-control" id="start_date" name="start_date" value="{{ request.args.get('start_date', '') }}" min="1900-01-01" max="2030-12-31">
                 </div>
                 <div class="col-md-3 form-group">
-                    <label for="end_date">End Date:</label>
-                    <input type="date" class="form-control" id="end_date" name="end_date" value="{{ request.args.get('end_date', '') }}">
+                    <label for="end_date">End Year:</label>
+                    <input type="date" class="form-control" id="end_date" name="end_date" value="{{ request.args.get('end_date', '') }}" min="1900-01-01" max="2030-12-31">
                 </div>
                 <div class="col-md-3 form-group">
                     <label class="invisible">Filter:</label> <!-- Espaço reservado para manter os botões alinhados -->
