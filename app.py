@@ -10,16 +10,16 @@ def upload_file():
     if request.method == 'POST':
         uploaded_file = request.files['file']
         if uploaded_file.filename == '':
-            return render_template('init.html', error="Nenhum arquivo selecionado")
+            return render_template('index.html', error="Nenhum arquivo selecionado")
         
         if not is_valid_txt_file(uploaded_file.filename):
-            return render_template('init.html', error="Somente arquivos .txt sao permitidos")
+            return render_template('index.html', error="Somente arquivos .txt sao permitidos")
         
         file_path = DataProcessor.save_uploaded_file(uploaded_file) # Save uploaded file
         processed_data = DataProcessor.process_data(file_path) # Process data
         return redirect(url_for('display_data')) 
     else:
-        return render_template('init.html')
+        return render_template('index.html')
 
 @app.route('/display', methods=['GET'])
 def display_data():
@@ -44,7 +44,7 @@ def display_data():
 
 @app.route('/')
 def index():
-    return render_template('init.html')
+    return render_template('index.html')
 
 # Clear filters 
 @app.route('/clear_filters')
