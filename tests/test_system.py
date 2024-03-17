@@ -34,10 +34,10 @@ def test_file_upload_and_display(client):
     assert b"Bobbie Batz" in response.data
 
 def test_data_processing():
-    # Dados de entrada do arquivo
-    input_file_path = 'tests/valid_file.txt'  # Corrigindo o caminho do arquivo
-
-    # Processar os dados
+    # File input data
+    input_file_path = 'tests/valid_file.txt'  
+    
+    # Processed data
     processed_data = DataProcessor.process_data(input_file_path)
     for user_data in processed_data:
         assert "user_id" in user_data
@@ -77,14 +77,14 @@ def test_filters(client):
     assert b"Bobbie Batz" in response.data
 
 def test_upload_folder_emptiness():
-    # Verificar se a pasta 'uploads' está vazia após a execução do programa
+    # Verify if the upload folder is empty
     assert len(os.listdir('uploads')) == 0
     
 def test_coverage():
     cov = coverage.Coverage()
     cov.start()
 
-    pytest.main(['-v'])  # Executando todos os testes
+    pytest.main(['-v'])  # Running all tests
 
     cov.stop()
-    cov.html_report(directory='coverage_html_report')  # Gerando relatório de cobertura
+    cov.html_report(directory='coverage_html_report')  # Generating coverage report

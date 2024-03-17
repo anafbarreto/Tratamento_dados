@@ -24,20 +24,19 @@ def filter_data(processed_data, order_id, start_date, end_date):
     for user_data in filtered_data:
         for order in user_data['orders']:
             order['total'] = round(order['total'], 2)
-
+            
     return filtered_data
+
 
 def is_valid_txt_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() == 'txt'
 
 def is_valid_date(date_str):
     if date_str is None:
-        return True  # Considera datas em branco como válidas
+        return True  
     try:
-        date_obj = datetime.strptime(date_str, '%Y-%m-%d')
-        # Verifica se a data é anterior ou igual à data atual
-        current_date = datetime.now().date()
-        return date_obj.date() <= current_date
+        datetime.strptime(date_str, '%Y-%m-%d')
+        return True
     except ValueError:
         return False
 
@@ -48,11 +47,9 @@ def is_valid_order_id(order_id, processed_data):
                 return True
     return False
 
-def limpar_pasta_uploads():
-    pasta_uploads = 'uploads'
-    for arquivo in os.listdir(pasta_uploads):
-        caminho_arquivo = os.path.join(pasta_uploads, arquivo)
-        os.remove(caminho_arquivo)
+def clean_uploads_folder():
+    folder_uploads = 'uploads'
+    for file in os.listdir(folder_uploads):
+        way_file = os.path.join(folder_uploads, file)
+        os.remove(way_file)
 
-# Registrar a função de limpeza para ser chamada no encerramento do programa
-atexit.register(limpar_pasta_uploads)

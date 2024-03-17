@@ -8,10 +8,10 @@ class DataProcessor:
     def save_uploaded_file(uploaded_file):
         uploads_folder = 'uploads'
         if not path.exists(uploads_folder):
-            makedirs(uploads_folder)
+            makedirs(uploads_folder)  # Create uploads folder, if it doesn't exist
         
         file_path = path.join(uploads_folder, uploaded_file.filename)
-        uploaded_file.save(file_path)
+        uploaded_file.save(file_path)  # Save uploaded file
         return file_path
     
     def process_data(file_path):
