@@ -53,3 +53,6 @@ def clear_filters():
 
 # Register the cleanup function to be called when the program exits
 atexit.register(clean_uploads_folder)
+
+if __name__ == '__main__':
+    app.run(debug=True)

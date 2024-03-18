@@ -48,17 +48,14 @@ We have a test chain to cover system functions such as: <br>
 Code and test coverage: 70%** (Coverage Report) <br>
 ** Not taking into account the import and function definition lines. <br>
 
-### Project Execution
-Acess: [system](https://data-processing-six.vercel.app/) <br>
+### Project Execution (Localhost)
 Test files: [data_1.txt](https://github.com/anafbarreto/Tratamento_dados/files/14629307/data_1.txt)  and 
-[data_2.txt](https://github.com/anafbarreto/Tratamento_dados/files/14629308/data_2.txt)
+[data_2.txt](https://github.com/anafbarreto/Tratamento_dados/files/14629308/data_2.txt) <br>
 
-
-### Localhost
 The environments with the necessary technologies to run the project locally are already in the .venv folder of this repository. <br>
 If in doubt, a file with all the libraries used and how to install them is available in the repository in the “libraries” folder. <br>
 
-1. In the top corner, make a fork. <br><br>
+1. In the top corner, make a fork. <br>
 <img src=Images/image-1.png>
 
 2. To activate the .venv environment, in the terminal use: `.\.venv\Scripts\activate`. <br><br>
@@ -76,7 +73,7 @@ If in doubt, a file with all the libraries used and how to install them is avail
 
 
 ### Test execution
-1. In the terminal use: pytest test.py to generate the test report. The display will be on the terminal itself. <br>
+1. In the terminal use: pytest to generate the test report. The display will be on the terminal itself. <br>
 2. Coverage is enabled to generate HTML output, showing test and application coverage, which can be accessed from the 'Index.html' file in the 'Coverage_html_report' folder in the directory. <br><br>
 <img src=Images/image-8.png> <br><br>
 Another option is to execute the command: coverage report -m, so the visualization will also be directly in the terminal. <br><br>
