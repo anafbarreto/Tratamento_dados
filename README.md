@@ -6,8 +6,7 @@ Create API system that receives denormalized data, performs processing, and retu
 * [Project description](#project-description)
 * [Technologies used](#technologies-used)
 * [Tests](#tests)
-* [Project execution](#project-execution)
-* [Localhost](#Localhost)
+* [Project execution](#project-execution-localhost)
 * [Test execution](#test-execution)
 * [Thanks](#thanks)
 

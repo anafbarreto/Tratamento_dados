@@ -1,10 +1,10 @@
 from os import makedirs, path
 from datetime import datetime
 
-
 class DataProcessor:
     processed_data = []
 
+    @staticmethod
     def save_uploaded_file(uploaded_file):
         uploads_folder = 'uploads'
         if not path.exists(uploads_folder):
@@ -14,6 +14,7 @@ class DataProcessor:
         uploaded_file.save(file_path)  # Save uploaded file
         return file_path
     
+    @staticmethod
     def process_data(file_path):
         users_data = {}
 

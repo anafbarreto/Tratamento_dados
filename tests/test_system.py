@@ -2,7 +2,7 @@ import pytest
 import coverage
 import os
 from app import app
-from controllers import DataProcessor
+from models import DataProcessor
 from werkzeug.datastructures import FileStorage
 
 @pytest.fixture

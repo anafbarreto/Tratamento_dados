@@ -1,5 +1,3 @@
-from datetime import datetime
-import atexit
 import os
 
 def filter_orders(orders, order_id, start_date, end_date):
