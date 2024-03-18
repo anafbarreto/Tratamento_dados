@@ -71,11 +71,11 @@
                 </div>
                 <div class="col-md-3 form-group">
                     <label for="start_date">Data inicio:</label>
-                    <input type="date" class="form-control" id="start_date" name="start_date" value="{{ request.args.get('start_date', '') }}" min="1900-01-01" max="2030-12-31">
+                    <input type="date" class="form-control" id="start_date" name="start_date" value="{{ request.args.get('start_date', '') }}" min="2000-01-01" max="2030-12-31">
                 </div>
                 <div class="col-md-3 form-group">
                     <label for="end_date">Data fim:</label>
-                    <input type="date" class="form-control" id="end_date" name="end_date" value="{{ request.args.get('end_date', '') }}" min="1900-01-01" max="2030-12-31">
+                    <input type="date" class="form-control" id="end_date" name="end_date" value="{{ request.args.get('end_date', '') }}" min="2000-01-01" max="2030-12-31">
                 </div>
                 <div class="col-md-3 form-group">
                     <label class="invisible">Filter:</label> <!-- Espaço reservado para manter os botões alinhados -->

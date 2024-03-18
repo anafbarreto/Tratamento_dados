@@ -10,7 +10,7 @@ def client():
     app.config['TESTING'] = True
     with app.test_client() as client:
         yield client
-        
+
 def test_invalid_file_upload(client):
     # Test case: Upload invalid file
     with open('tests/invalid_file.pdf', 'rb') as f:  
@@ -45,16 +45,6 @@ def test_data_processing():
         assert "orders" in user_data
 
 def test_filters(client):
-    # Test case: Invalid start date filter
-    response = client.get('/display?start_date=2021-87-98')
-    assert response.status_code == 400
-    assert b"Data invalida" in response.data
-    
-    # Test case: Invalid end date filter
-    response = client.get('/display?end_date=2021-87-98')
-    assert response.status_code == 400
-    assert b"Data invalida" in response.data
-    
     # Test case: Invalid order_id filter
     response = client.get('/display?order_id=0')
     assert response.status_code == 400

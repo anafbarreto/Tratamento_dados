@@ -31,14 +31,6 @@ def filter_data(processed_data, order_id, start_date, end_date):
 def is_valid_txt_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() == 'txt'
 
-def is_valid_date(date_str):
-    if date_str is None:
-        return True  
-    try:
-        datetime.strptime(date_str, '%Y-%m-%d')
-        return True
-    except ValueError:
-        return False
 
 def is_valid_order_id(order_id, processed_data):
     for user_data in processed_data:

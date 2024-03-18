@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 from controllers import DataProcessor
-from utils import is_valid_date, is_valid_order_id, is_valid_txt_file, filter_data, clean_uploads_folder
+from utils import is_valid_order_id, is_valid_txt_file, filter_data, clean_uploads_folder
 import atexit
 
 app = Flask(__name__)
@@ -9,9 +9,6 @@ app = Flask(__name__)
 def upload_file():
     if request.method == 'POST':
         uploaded_file = request.files['file']
-        if uploaded_file.filename == '':
-            return render_template('index.html', error="Nenhum arquivo selecionado")
-        
         if not is_valid_txt_file(uploaded_file.filename):
             return render_template('index.html', error="Somente arquivos .txt sao permitidos")
         
@@ -27,11 +24,6 @@ def display_data():
     start_date = request.args.get('start_date') or None
     end_date = request.args.get('end_date') or None
 
-    # Check if the dates are valid
-    if not is_valid_date(start_date) or not is_valid_date(end_date):
-        errors = [{"error": "Data invalida"}]
-        return render_template('display.html', errors=errors), 400
-
     # Check if the order_id is valid
     if order_id and not is_valid_order_id(order_id, DataProcessor.processed_data):
        errors = [{"error": "Order ID nao encontrado"}]
@@ -39,6 +31,11 @@ def display_data():
 
     # Filter data based on passed parameters
     filtered_data = filter_data(DataProcessor.processed_data, order_id, start_date, end_date)
+    
+    # Check if filtered data is empty
+    if not filtered_data:
+        errors = [{"error": "Dados nao encontrados"}]
+        return render_template('display.html', errors=errors), 404
 
     return render_template('display.html', data=filtered_data), 200
 

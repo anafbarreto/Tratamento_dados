@@ -1,6 +1,6 @@
 from os import makedirs, path
 from datetime import datetime
-from utils import is_valid_date
+
 
 class DataProcessor:
     processed_data = []
