@@ -25,10 +25,8 @@ def filter_data(processed_data, order_id, start_date, end_date):
             
     return filtered_data
 
-
 def is_valid_txt_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() == 'txt'
-
 
 def is_valid_order_id(order_id, processed_data):
     for user_data in processed_data:
